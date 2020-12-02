@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Profile</title>
+    <link rel="stylesheet" href="css/style.css" type="text/css">
+    <link rel="stylesheet" href="css/profile.css" type="text/css">
+    <style>
+        .backhome{
+            float:left;
+            width:100px;
+            height:30px;
+            opacity:70%;
+            border-radius:5px;
+            cursor:pointer;
+
+        }
+    </style>
+    <script>
+        window.onload=function(){
+            const backHome=document.querySelector(".backhome")
+            backHome.addEventListener('click',function(){
+                window.history.go(-1)
+            },true)
+            let wordContent=JSON.parse(sessionStorage.getItem('profile'))
+            let wordContentName=wordContent.name
+            let wordContentAge=wordContent.age
+            const usernameDom=document.querySelector(".username")
+            const errorMention=document.querySelector(".err-mention")
+            usernameDom.value=wordContent.name
+            const ageDom=document.querySelector(".age")
+            ageDom.value=wordContent.age
+            const confirmButton=document.querySelector(".confirm-button")
+            // usernameDom.addEventListener('keydown',(e)=>{
+            //     e.target.value=
+            // })
+            let message=''
+            confirmButton.addEventListener('click',()=>{
+                if(usernameDom.value.length<6 || usernameDom.value.length>10){
+                    message="oop! username format is not correct"
+                    errorMention.innerHTML=message;
+                }
+                else if(ageDom.value<0 || ageDom.value>100){
+                    message="oop! age format is not correct"
+                    errorMention.innerHTML=message;
+                }
+                else{
+                    message="your profile information has been changed successfully!"
+
+                    errorMention.innerHTML=message;
+                    let profile={
+                        name:usernameDom.value,
+                        age:ageDom.value
+                    }
+                    sessionStorage.setItem("profile", JSON.stringify(profile));
+                }
+
+            },true)
+
+
+
+        }
+    </script>
+</head>
+<body>
+<div class="display-img">
+    <button class="backhome">back</button>
+
+</div>
+    <div class="profile">
+
+
+        <h2>your profile</h2>
+        <br>
+
+
+        <div>username(a string with 6-10 characters)</div>
+        <input value="" name="username" type="text" class="username">
+        <br>
+        <br>
+
+
+        <div>age (digits from 0 to 99)</div>
+        <input value="" name="age" type="text" class="age">
+        <br>
+        <br>
+
+
+        <div>gender</div>
+        <input type="radio" name="gender" value="male">
+        <label for="front-end">male</label>
+        <input type="radio" name="gender" value="female">
+        <label for="front-end">female</label>
+        <br>
+        <br>
+
+
+        <div>programming interest</div>
+        <input type="checkbox" name="interest" value="front-end" id="front-end">
+        <label for="front-end">front-end</label>
+        <input type="checkbox" name="interest" value="back-end">
+        <label for="front-end">back-end</label>
+        <input type="checkbox" name="interest" value="game">
+        <label for="front-end">game</label>
+        <input type="checkbox" name="interest" value="Android">
+        <label for="front-end">Android</label>
+        <input type="checkbox" name="interest" value="IOS">
+        <label for="front-end">IOS</label>
+        <input type="checkbox" name="interest" value="data mining">
+        <label for="front-end">data-mining</label>
+        <br>
+        <br>
+
+
+        <div>skills</div>
+        <select>
+            <option value="Javascript">Javascript</option>
+            <option value="Java">Java</option>
+            <option value="C++">C++</option>
+            <option value="C#">C#</option>
+            <option value="Swift">Swift</option>
+            <option value="Unity 3D">Unity 3D</option>
+        </select>
+        <br>
+        <br>
+        <button class="confirm-button">confirm</button>
+        <div class="err-mention"></div>
+
+
+
+
+
+    </div>
+
+</body>
+</html>

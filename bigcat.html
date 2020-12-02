@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="css/style.css" type="text/css">
+    <link rel="preload" href="https://finalyao.s3.us-east-2.amazonaws.com/login.png" as="image">
+    <title>Title</title>
+    <script>
+        window.onload=function(){
+            const word=document.querySelector(".display-img>span")
+            let wordContent=JSON.parse(sessionStorage.getItem('profile'))
+            let wordContentName=wordContent.name
+            let wordContentAge=wordContent.age
+            word.innerHTML="Welcome"+" "+wordContentName
+
+        }
+    </script>
+</head>
+<body>
+<div class="display-img">
+    <span>Ethan Yao</span>
+    <div class="wrapper">
+        <nav>
+
+            <label id="home"><a href="#">Home</a></label>
+            <label id="resume"><a href="./resume.html">Resume</a></label>
+            <label id="bio"><a href="./bio.html">Bio</a></label>
+            <label id="contact"><a href="contact.html">contact</a></label>
+            <label id="profile"><a href="profile.html">profile</a></label>
+            <div class="tab"></div>
+        </nav>
+    </div>
+
+
+    <br/>
+    <span>Web front-end development</span>
+
+
+</div>
+<div class="portfolio-part">
+    <h2>portfolio</h2>
+    <div class="portfolio">
+
+        <div>
+
+            <img src="https://finalyao.s3.us-east-2.amazonaws.com/musicapp.png">
+            <div class="pro-info">this is a music full-stack PWA design based on Vue.js that contains music player
+                that allows user to play in background.
+                The main advantage of that is its ability to restore music without network environment</div>
+
+
+
+        </div>
+
+        <div>
+            <img src="https://finalyao.s3.us-east-2.amazonaws.com/shopapp.jpeg">
+            <div class="pro-info">this is a online-shopping mall webapp. We use Vue.js, Vue router and Vuex, PHP to build a stable service. </div>
+
+
+
+        </div>
+        <div>
+            <img src="https://finalyao.s3.us-east-2.amazonaws.com/food.png">
+            <div class="pro-info">this is the web design based on React to mimic the popular chowbus platform. On the back-end we develop the restful API to transmit the proper datastream to the frontend</div>
+        </div>
+
+    </div>
+</div>
+
+
+<div class="contact-info">
+    <p>phone:224-817-1172</p>
+    <p>email:Jingxingyao2021@u.northwestern.edu</p>
+</div>
+
+<script src="js/home.js"></script>
+
+</body>
+</html>
